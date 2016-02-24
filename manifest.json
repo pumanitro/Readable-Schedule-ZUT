@@ -1,0 +1,32 @@
+{
+  "name": "Readable Schedule ZUT",
+  "description": "This App should help read schedule on e-dziekanat.",
+  "version": "1.6",
+  "manifest_version": 2,
+  "background": {
+	    "scripts": ["background.js"],
+	    "persistent": false
+	  },
+  "content_scripts": [
+    {
+      "matches": ["https://edziekanat.zut.edu.pl/WU/PodzGodzin.aspx"],
+      "css": ["style.css"],
+      "js": ["jquery-1.12.1.min.js", "readable.js"]
+    }
+   ],
+  "page_action": {
+          "default_icon": "png/24x24/calendar.png",
+          "default_title": "Readable Schedule ZUT"
+        },
+  "icons" : {
+	    "128" : "calendar.png"
+	  },
+  "permissions": [
+	  "tabs",
+	  "bookmarks",
+	  "activeTab",
+	  "https://www.edziekanat.zut.edu.pl/*",
+	  "unlimitedStorage",
+      "declarativeContent"
+	]
+}
