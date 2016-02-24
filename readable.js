@@ -27,6 +27,10 @@ $(document).ready(function(){
         arr.push((obj));
     }
 
+    $(".gridPadding").prepend("" +
+    "<table class='.gridPadding .fill'> " +
+    "</table>");
+
     window.alert(JSON.stringify(arr));
 });
 
