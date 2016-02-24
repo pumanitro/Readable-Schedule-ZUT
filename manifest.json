@@ -1,7 +1,7 @@
 {
   "name": "Readable Schedule ZUT",
   "description": "This App should help read schedule on e-dziekanat.",
-  "version": "1.6",
+  "version": "1.8.4",
   "manifest_version": 2,
   "background": {
 	    "scripts": ["background.js"],
