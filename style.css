@@ -1,0 +1,29 @@
+#myTable
+{
+    margin-bottom: 50px;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#myTable td
+{
+    padding: 10px;
+    border: 1px solid #d9d9d9;
+    height: 25px;
+}
+
+#myTable tbody tr:first-child
+{
+    text-transform: uppercase;
+}
+
+#myTable tr:nth-child(even)
+{
+    background-color: #F5F5F5;
+}
+
+#myTable tr:hover
+{
+    background-color: #e5e5e5;
+}
