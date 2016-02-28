@@ -1,7 +1,7 @@
 {
   "name": "Readable Schedule ZUT",
-  "description": "This App should help read schedule on e-dziekanat.",
-  "version": "4.5.5",
+  "description": "This App should help to read schedule on e-dziekanat.",
+  "version": "1.2.1",
   "manifest_version": 2,
   "background": {
 	    "scripts": ["background.js"],
@@ -11,7 +11,7 @@
     {
       "matches": ["https://edziekanat.zut.edu.pl/WU/PodzGodzin.aspx"],
       "css": ["style.css"],
-      "js": ["jquery-1.12.1.min.js", "readable.js"]
+      "js": ["jquery-1.12.1.min.js", "bootstrap/js/bootstrap.min.js","readable.js"]
     }
    ],
   "page_action": {
