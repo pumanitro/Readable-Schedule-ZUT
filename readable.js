@@ -2,15 +2,18 @@ $(document).ready(function(){
     //FA
     $("head").append("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>");
 
+    //Ilość rzędów ddanych
+    var rowCount = $(".gridPadding >tbody >tr").length;
+
     //usuwanie zbędnych elementów
     $("#page_left_content").hide();
-    var rowCount = $(".gridPadding >tbody >tr").length;
     $("#page_header").hide();
     $("#aspnetForm").css("padding-top" , "0px");
     $("#ctl00_ctl00_ContentPlaceHolder_wumasterWhoIsLoggedIn").hide();
     $("#page_language").hide();
     $("#ctl00_ctl00_TopMenuPlaceHolder_wumasterMenuTop_menuTop").hide();
 
+    //gorny pasek - wstecz i zoom
     $("#page_top_menu").prepend("" +
     "<span class='pull-left'>" +
     "   <abbr title='BACK'><i class='fa fa-arrow-circle-left fa-2x menu-button' onClick='history.go(-1);return true;'></i></abbr>" +
@@ -23,11 +26,11 @@ $(document).ready(function(){
     $("#page_top_menu").css("height","45px");
     $("#page_top_menu").css("padding-right","49px");
 
+    //Bootstrapowski tooltip ? Nie wiem po co ? (może kiedyś chciałem użyć)
     $('[data-toggle="tooltip"]').tooltip();
 
-    $("#ctl00_ctl00_ContentPlaceHolder_RightContentPlaceHolder_Label3").html("Extension created by <span style='color:#092A63; font-size: 22px;'>πJ</span> member of <span style='color:#092A63; font-size: 22px;'>Its a CREW</span> team.");
-
-    var arr = [];
+    //Napis Extension created by IIJ
+    $("#ctl00_ctl00_ContentPlaceHolder_RightContentPlaceHolder_Label3").html("Extension created by <span style='color:#092A63; font-size: 22px;'>πJ</span> member of <span style='color:#092A63; font-size: 22px;'>.Net</span> team.");
 
     var oneRow = function(date,from,oneRowTo,subject,teacher,room,oneRowDescription){
         this.date=date;
@@ -38,6 +41,10 @@ $(document).ready(function(){
         this.room=room;
         this.oneRowDescription=oneRowDescription;
     };
+
+    //Tworzenie tablicy obiektów oneRow, które przechowują informacje o przedmiocie
+
+    var arr = [];
 
     for (var i = 2; i <= rowCount; i++)
     {
@@ -57,6 +64,8 @@ $(document).ready(function(){
     var check = arr[0].date;
     var l,time=8;
     var days = [];
+
+    alert(JSON.stringify(arr));
 
     function generateDates()
     {
