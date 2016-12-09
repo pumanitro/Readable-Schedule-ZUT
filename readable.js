@@ -99,6 +99,8 @@ $(document).ready(function(){
         else return "Ć";
     }*/
 
+
+    //TODO : Rewrite algorithm from sheet of peper to generate schedule
     function generateSchedule(timeFrom,timeTo,days)
     {
         var text = "";
