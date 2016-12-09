@@ -32,14 +32,15 @@ $(document).ready(function(){
     //Napis Extension created by IIJ
     $("#ctl00_ctl00_ContentPlaceHolder_RightContentPlaceHolder_Label3").html("Extension created by <span style='color:#092A63; font-size: 22px;'>πJ</span> member of <span style='color:#092A63; font-size: 22px;'>.Net</span> team.");
 
-    var oneRow = function(date,from,oneRowTo,subject,teacher,room,oneRowDescription){
+    var oneRow = function(date,fromHour,toHour,room,subject,formOfTeaching,teacher,linkToTeacher){
         this.date=date;
-        this.from=from;
-        this.oneRowTo=oneRowTo;
-        this.subject=subject;
-        this.teacher=teacher;
+        this.fromHour=fromHour;
+        this.toHour=toHour;
         this.room=room;
-        this.oneRowDescription=oneRowDescription;
+        this.subject=subject;
+        this.formOfTeaching=formOfTeaching;
+        this.teacher=teacher;
+        this.linkToTeacher = linkToTeacher;
     };
 
     //Tworzenie tablicy obiektów oneRow, które przechowują informacje o przedmiocie
@@ -51,12 +52,13 @@ $(document).ready(function(){
         var obj = new oneRow();
 
         obj.date = $(".gridPadding tr:nth-child("+i+") td:nth-child(1)").text();
-        obj.from = $(".gridPadding tr:nth-child("+i+") td:nth-child(2)").text();
-        obj.oneRowTo = $(".gridPadding tr:nth-child("+i+") td:nth-child(3)").text();
-        obj.subject = $(".gridPadding tr:nth-child("+i+") td:nth-child(4)").text();
-        obj.teacher = $(".gridPadding tr:nth-child("+i+") td:nth-child(5)").text();
-        obj.room = $(".gridPadding tr:nth-child("+i+") td:nth-child(6)").text();
-        obj.oneRowDescription = $(".gridPadding tr:nth-child("+i+") td:nth-child(8)").text();
+        obj.fromHour = $(".gridPadding tr:nth-child("+i+") td:nth-child(2)").text();
+        obj.toHour = $(".gridPadding tr:nth-child("+i+") td:nth-child(3)").text();
+        obj.room = $(".gridPadding tr:nth-child("+i+") td:nth-child(4)").text();
+        obj.subject = $(".gridPadding tr:nth-child("+i+") td:nth-child(5)").text();
+        obj.formOfTeaching = $(".gridPadding tr:nth-child("+i+") td:nth-child(6)").text();
+        obj.teacher = $(".gridPadding tr:nth-child("+i+") td:nth-child(7)").text();
+        obj.linkToTeacher = document.getElementById("ctl00_ctl00_ContentPlaceHolder_RightContentPlaceHolder_lb_Plan").href;
 
         arr.push((obj));
     }
