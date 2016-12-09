@@ -67,35 +67,37 @@ $(document).ready(function(){
     var l,time=8;
     var days = [];
 
-    alert(JSON.stringify(arr));
+    //alert(JSON.stringify(arr));
 
-    function generateDates()
+    function generateDatesRow()
     {
-        var text = "<td class='navbar-fixed-top'><b> "+arr[0].date.slice(10)+"</b><br>"+arr[0].date.slice(0,10)+"</td>";
+        var text = "<tr> <td style='width: 100px;'></td>";
+
+        //Potrzebne do pętli, bo wyświetlane daty mogą się powtarzać
+        text += "<td class='navbar-fixed-top'><b> "+arr[0].date.slice(10)+"</b><br>"+arr[0].date.slice(0,10)+"</td>";
         days[0] = arr[0].date;
-        //window.alert(days[0]);
-        var licz = 0;
+
+        //Od jeden bo sprawdza poprzednią datę z aktualną ( nie jest lepiej sprawdzać aktualną z następną )
         for (var i = 1; i < arr.length; i++)
         {
             if(arr[i-1].date!=arr[i].date)
             {
-                licz++;
                 text += "<td class='navbar-fixed-top'><b> "+arr[i].date.slice(10)+"</b><br>"+arr[i].date.slice(0,10)+"</td>";
-                days[licz] = arr[i].date;
-                //window.alert("licz = "+licz+"\n"+"days[licz] = "+days[licz]+"\n"+"arr[i].date = "+arr[i].date+"\n");
+                days[i] = arr[i].date;
             }
         }
 
-        //window.alert(days[1]);
+        text += "</tr>";
+
         return text;
     }
 
-    function getTypeOfSubject(subj)
+   /* function getTypeOfSubject(subj)
     {
         if(subj == "wykład") return "W";
         else if (subj == "laboratorium") return "L";
         else return "Ć";
-    }
+    }*/
 
     function generateSchedule(timeFrom,timeTo,days)
     {
@@ -116,6 +118,7 @@ $(document).ready(function(){
 
             if (((timeFrom == arr[i].from)||(timeTo == arr[i].oneRowTo))&&(day == arr[i].date))
             {
+                //Nie ma funkcji getTypeOfSubject:
                 text += "<td class='inside'>"+
                     "<div class='room'>"+arr[i].room+"</div>"+
                     "<div style='subject'>"+arr[i].subject+"</div>"+
@@ -156,13 +159,7 @@ $(document).ready(function(){
         l=j-1;
 
         if( j == 1 ) {
-            dates = generateDates();
-
-            $("#myTable").append("" +
-            "<tr>" +
-            "<td style='width: 100px;'></td>" + dates +
-            "</tr>" +
-            "");
+            $("#myTable").append(generateDatesRow());
         }
         else
         {
